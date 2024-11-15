@@ -1,29 +1,20 @@
-import { Button, Form, Input } from 'antd';
-import { Controller, useForm } from 'react-hook-form';
+import { Layout } from 'antd';
+import React from 'react';
 
-function App() {
-  const { control, handleSubmit } = useForm();
+import { FilterButton } from './components/Button';
+import { ContentContainer } from './components/Container';
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
-
+const { Content } = Layout;
+const App: React.FC = () => {
   return (
-    <Form onFinish={handleSubmit(onSubmit)}>
-      <Form.Item label="Name">
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => <Input {...field} />}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Content style={{ padding: '10px 50px' }}>
+        <ContentContainer>
+          <FilterButton />
+        </ContentContainer>
+      </Content>
+    </Layout>
   );
-}
+};
 
-export default App
+export default App;
